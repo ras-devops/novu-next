@@ -1,8 +1,6 @@
 FROM node:20-slim as dev_base
-RUN apk add g++ make py3-pip
 
 ENV NX_DAEMON=false
-
 RUN npm i pm2 -g
 
 USER 1000
