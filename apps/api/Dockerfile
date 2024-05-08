@@ -1,11 +1,9 @@
-FROM node:20-alpine3.19 as dev_base
+FROM node:20-slim as dev_base
 RUN apk add g++ make py3-pip
 
 ENV NX_DAEMON=false
 
 RUN npm i pm2 -g
-RUN npm --no-update-notifier --no-fund --global install pnpm@8.9.0
-RUN pnpm --version
 
 USER 1000
 WORKDIR /usr/src/app
