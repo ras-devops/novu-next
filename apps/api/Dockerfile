@@ -1,6 +1,9 @@
 FROM node:20-slim as dev_base
-
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
 ENV NX_DAEMON=false
+RUN corepack enable
+
 RUN npm i pm2 -g
 
 USER 1000
