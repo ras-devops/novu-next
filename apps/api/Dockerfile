@@ -1,10 +1,11 @@
-FROM node:20-slim as dev_base
-ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
-ENV NX_DAEMON=false
-RUN corepack enable
+FROM node:20-alpine3.19 as dev_base
+RUN apk add g++ make py3-pip
 
-RUN apt update -y && apt-get install --no-cache -y python3
+ENV NX_DAEMON=false
+
+RUN npm i pm2 -g
+RUN npm --no-update-notifier --no-fund --global install pnpm@8.9.0
+RUN pnpm --version
 
 USER 1000
 WORKDIR /usr/src/app
