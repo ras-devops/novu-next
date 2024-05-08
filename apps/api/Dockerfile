@@ -4,7 +4,7 @@ ENV PATH="$PNPM_HOME:$PATH"
 ENV NX_DAEMON=false
 RUN corepack enable
 
-RUN npm i pm2 -g
+RUN apt update -y && apt-get install --no-cache -y python3
 
 USER 1000
 WORKDIR /usr/src/app
