@@ -21,3 +21,8 @@ jobs:
         cache: 'pnpm'
     - name: Install dependencies
       run: pnpm install
+    - name: Docker build API
+      run: |
+        cd apps/api
+        pnpm docker:build
+        docker images
